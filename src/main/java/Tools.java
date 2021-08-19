@@ -1,16 +1,18 @@
+import java.math.BigInteger;
+
 public class Tools {
 
-    public static final int INDEX_NOT_FOUND = -1;
-
-    public static int indexOf(CharSequence[] array, CharSequence value) {
-        if (null != array) {
-            for (int i = 0; i < array.length; i++) {
-                if (array[i].equals(value)) {
-                    return i;
-                }
-            }
+    public static String toHexString(BigInteger value) {
+        if (value == null) {
+            System.out.println("\033[31m" + "value不能为空");
         }
-        return INDEX_NOT_FOUND;
+        String hex = value.toString(16);
+        return hex.length() % 2 == 0 ? hex : "0" + hex;
+    }
+
+
+    public static String zeros(int n) {
+        return new String(new char[n]).replace("\0", "0");
     }
 
 }
